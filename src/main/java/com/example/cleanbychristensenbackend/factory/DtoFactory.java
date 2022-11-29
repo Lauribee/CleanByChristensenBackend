@@ -20,6 +20,7 @@ public class DtoFactory {
             dto.setLastName(customer.getLastName());
             dto.setAddress(customer.getAddress());
             dto.setPhoneNumber(customer.getPhoneNumber());
+            dto.setMessage(customer.getMessage());
             dto.setKvm(customer.getKvm());
             return dto;
         }
@@ -40,6 +41,9 @@ public class DtoFactory {
             }
             if (dto.getPhoneNumber() != null) {
                 customer.setPhoneNumber(dto.getPhoneNumber());
+            }
+            if (dto.getMessage() != null) {
+                customer.setMessage(dto.getMessage());
             }
             if (dto.getKvm() != 0) {
                 customer.setKvm(dto.getKvm());
@@ -62,7 +66,7 @@ public class DtoFactory {
         public static ReviewDto fromReview(Review review) {
             ReviewDto dto = new ReviewDto();
             dto.setId(review.getId());
-            dto.setAmountOfStars(review.getStars());
+            dto.setAmountOfStars(review.getAmountOfStars());
             dto.setReviewMessage(review.getReviewMessage());
             return dto;
         }
@@ -73,7 +77,7 @@ public class DtoFactory {
                 review.setId(dto.getId());
             }
             if (dto.getAmountOfStars() != 0) {
-                review.setStars(dto.getAmountOfStars());
+                review.setAmountOfStars(dto.getAmountOfStars());
             }
             if (dto.getReviewMessage() != null) {
                 review.setReviewMessage(dto.getReviewMessage());

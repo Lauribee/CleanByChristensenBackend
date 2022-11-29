@@ -46,6 +46,12 @@ import java.util.Objects;
         private String phoneNumber;
 
         /**
+         * Kundens besked til firmaet.
+         */
+        @Column(name = "MESSAGE")
+        private String message;
+
+        /**
          * Kundens boligstørrelse.
          */
         @Column(name = "SQUAREMETERS")
@@ -58,13 +64,15 @@ import java.util.Objects;
          * @param lastName
          * @param address
          * @param phoneNumber
+         * @param message
          * @param kvm
          */
-        public Customer(String firstName, String lastName, String address, String phoneNumber, double kvm) {
+        public Customer(String firstName, String lastName, String address, String phoneNumber, String message, double kvm) {
             this.firstName = firstName;
             this.lastName = lastName;
             this.address = address;
             this.phoneNumber = phoneNumber;
+            this.message = message;
             this.kvm = kvm;
         }
 
@@ -80,6 +88,9 @@ import java.util.Objects;
             }
             if (!partial || customer.phoneNumber != null) {
                 this.phoneNumber = customer.phoneNumber;
+            }
+            if (!partial || customer.message != null) {
+                this.message = customer.message;
             }
             if (!partial || customer.kvm != 0) {
                 this.kvm = customer.kvm;
