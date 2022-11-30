@@ -85,6 +85,18 @@ public class ReviewController {
     }
 
     /**
+     * Tilføjer/skaber et review.
+     *
+     * @param dto
+     * @return ny review
+     */
+    @PostMapping
+    public ResponseEntity<ReviewDto> create(@Valid @RequestBody ReviewDto dto) {
+        Review item = service.create(DtoFactory.fromReviewDto(dto));
+        return ResponseEntity.ok().body(DtoFactory.fromReview(item));
+    }
+
+    /**
      * Opdaterer en ReviewDto fra en anden ReviewDto.
      *
      * @param id
