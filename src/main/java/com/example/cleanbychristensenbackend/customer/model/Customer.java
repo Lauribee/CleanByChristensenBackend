@@ -11,7 +11,7 @@ import java.util.Objects;
     @Setter
     @NoArgsConstructor
     @Entity
-    @Table(name = "CUSTOMER")
+    @Table(name = "CUSTOMERS")
     public class Customer {
 
         /**
