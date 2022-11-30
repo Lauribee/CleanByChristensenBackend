@@ -14,5 +14,5 @@ public class CustomerDto implements Serializable {
     private String address;
     private String phoneNumber;
     private String message;
-    private double kvm;
+    private Double kvm;
 }

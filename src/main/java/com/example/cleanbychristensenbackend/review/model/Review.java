@@ -73,3 +73,4 @@ public class Review {
         return Objects.hash(id, amountOfStars, reviewMessage);
     }
 }
+

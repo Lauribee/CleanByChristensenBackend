@@ -119,12 +119,12 @@ import java.util.Objects;
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Customer customer = (Customer) o;
-            return Double.compare(customer.kvm, kvm) == 0 && Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(address, customer.address) && Objects.equals(phoneNumber, customer.phoneNumber);
+            return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(address, customer.address) && Objects.equals(phoneNumber, customer.phoneNumber) && Objects.equals(message, customer.message) && Objects.equals(kvm, customer.kvm);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(id, firstName, lastName, address, phoneNumber, kvm);
+            return Objects.hash(id, firstName, lastName, address, phoneNumber, message, kvm);
         }
     }
 
