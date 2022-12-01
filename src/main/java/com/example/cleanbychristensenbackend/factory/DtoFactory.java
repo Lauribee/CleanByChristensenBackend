@@ -76,7 +76,7 @@ public class DtoFactory {
             if (dto.getId() != null) {
                 review.setId(dto.getId());
             }
-            if (dto.getAmountOfStars() != 0) {
+            if (dto.getAmountOfStars() != null) {
                 review.setAmountOfStars(dto.getAmountOfStars());
             }
             if (dto.getReviewMessage() != null) {

@@ -12,7 +12,7 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "REVIEWS")
+@Table(name = "reviews")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,30 +21,32 @@ public class Review {
     /**
      * Antal stjerner
      */
-    @Column(name = "AMOUNTOFSTARS")
+    @Column(name = "amountofstars")
     private Double amountOfStars;
 
     /**
      * Review besked
      */
-    @Column(name = "REVIEWMESSAGE")
+    @Column(name = "reviewmessage")
     private String reviewMessage;
 
 
     /**
      * Konstruerer en ny review.
      *
-     * @param amountOfStars
-     * @param reviewMessage
      */
-    public Review(double amountOfStars, String reviewMessage) {
+    public Review(Double amountOfStars, String reviewMessage) {
         this.amountOfStars = amountOfStars;
         this.reviewMessage = reviewMessage;
     }
 
     public Review updateFrom(Review review, boolean partial) {
-        if (!partial || review.amountOfStars != 0) {this.amountOfStars = review.amountOfStars;}
-        if (!partial || review.reviewMessage != null) {this.reviewMessage = review.reviewMessage;}
+        if (!partial || review.amountOfStars != null) {
+            this.amountOfStars = review.amountOfStars;
+        }
+        if (!partial || review.reviewMessage != null) {
+            this.reviewMessage = review.reviewMessage;
+        }
         return this;
     }
 
@@ -63,14 +65,13 @@ public class Review {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Review review = (Review) o;
-        return Double.compare(review.amountOfStars, amountOfStars) == 0 && Objects.equals(id, review.id) && Objects.equals(reviewMessage, review.reviewMessage);
+        if (!(o instanceof Review review)) return false;
+        return getId().equals(review.getId()) && getAmountOfStars().equals(review.getAmountOfStars()) && getReviewMessage().equals(review.getReviewMessage());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amountOfStars, reviewMessage);
+        return Objects.hash(getId(), getAmountOfStars(), getReviewMessage());
     }
 }
 
