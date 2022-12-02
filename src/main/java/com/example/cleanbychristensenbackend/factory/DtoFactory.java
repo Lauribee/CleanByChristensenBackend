@@ -16,6 +16,7 @@ public class DtoFactory {
         public static CustomerDto fromCustomer(Customer customer) {
             CustomerDto dto = new CustomerDto();
             dto.setId(customer.getId());
+            dto.setSubject(customer.getSubject());
             dto.setFirstName(customer.getFirstName());
             dto.setLastName(customer.getLastName());
             dto.setAddress(customer.getAddress());
@@ -29,6 +30,9 @@ public class DtoFactory {
             Customer customer = new Customer();
             if (dto.getId() != null) {
                 customer.setId(dto.getId());
+            }
+            if(dto.getSubject() != null) {
+                customer.setSubject(dto.getSubject());
             }
             if (dto.getFirstName() != null) {
                 customer.setFirstName(dto.getFirstName());
@@ -45,7 +49,7 @@ public class DtoFactory {
             if (dto.getMessage() != null) {
                 customer.setMessage(dto.getMessage());
             }
-            if (dto.getKvm() != 0) {
+            if (dto.getKvm() != null) {
                 customer.setKvm(dto.getKvm());
             }
             return customer;

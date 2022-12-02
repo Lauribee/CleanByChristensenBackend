@@ -11,7 +11,7 @@ import java.util.Objects;
     @Setter
     @NoArgsConstructor
     @Entity
-    @Table(name = "CUSTOMERS")
+    @Table(name = "customers")
     public class Customer {
 
         /**
@@ -22,39 +22,45 @@ import java.util.Objects;
         private Long id;
 
         /**
+         * Besked emne
+         */
+        @Column(name = "subject")
+        private String subject;
+
+        /**
          * Kundens fornavn.
          */
-        @Column(name = "FIRSTNAME")
+        @Column(name = "firstname")
         private String firstName;
 
         /**
          * Kundens efternavn.
          */
-        @Column(name = "LASTNAME")
+        @Column(name = "lastname")
         private String lastName;
 
         /**
          * Kundens addresse.
          */
-        @Column(name = "ADDRESS")
+        @Column(name = "address")
         private String address;
 
         /**
          * Kundens telefonnummer.
          */
-        @Column(name = "PHONENUMBER")
+        @Column(name = "phonenumber")
         private String phoneNumber;
 
         /**
          * Kundens besked til firmaet.
          */
-        @Column(name = "MESSAGE")
+        @Column(name = "message")
         private String message;
 
         /**
          * Kundens boligstørrelse.
          */
-        @Column(name = "SQUAREMETERS")
+        @Column(name = "squaremeters")
         private Double kvm;
 
         /**
@@ -67,7 +73,8 @@ import java.util.Objects;
          * @param message
          * @param kvm
          */
-        public Customer(String firstName, String lastName, String address, String phoneNumber, String message, double kvm) {
+        public Customer(String subject, String firstName, String lastName, String address, String phoneNumber, String message, Double kvm) {
+            this.subject = subject;
             this.firstName = firstName;
             this.lastName = lastName;
             this.address = address;
@@ -77,6 +84,9 @@ import java.util.Objects;
         }
 
         public Customer updateFrom(Customer customer, boolean partial) {
+            if (!partial || customer.subject != null) {
+                this.subject = customer.subject;
+            }
             if (!partial || customer.firstName != null) {
                 this.firstName = customer.firstName;
             }
@@ -111,20 +121,22 @@ import java.util.Objects;
                     '}';
         }
 
+
         /**
          * equals
          */
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (!(o instanceof Customer)) return false;
             Customer customer = (Customer) o;
-            return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(address, customer.address) && Objects.equals(phoneNumber, customer.phoneNumber) && Objects.equals(message, customer.message) && Objects.equals(kvm, customer.kvm);
+            return Objects.equals(getId(), customer.getId()) && Objects.equals(getSubject(), customer.getSubject()) && Objects.equals(getFirstName(), customer.getFirstName()) && Objects.equals(getLastName(), customer.getLastName()) && Objects.equals(getAddress(), customer.getAddress()) && Objects.equals(getPhoneNumber(), customer.getPhoneNumber()) && Objects.equals(getMessage(), customer.getMessage()) && Objects.equals(getKvm(), customer.getKvm());
         }
+
 
         @Override
         public int hashCode() {
-            return Objects.hash(id, firstName, lastName, address, phoneNumber, message, kvm);
+            return Objects.hash(id, subject, lastName, address, phoneNumber, message, kvm);
         }
     }
 

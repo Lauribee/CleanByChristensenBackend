@@ -9,6 +9,7 @@ import java.io.Serializable;
 @Data
 public class CustomerDto implements Serializable {
     private Long id;
+    private String subject;
     private String firstName;
     private String lastName;
     private String address;
