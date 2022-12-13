@@ -50,5 +50,5 @@ jobs:
         with:
           app-name: 'CleanByChristensen'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C1B9A588C3014DE4824A5E0F32F55598 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FCAF9927DBBC4E1898310CBA1DD28529 }}
           package: '*.jar'
